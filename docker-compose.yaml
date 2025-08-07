@@ -1,0 +1,18 @@
+services:
+  wifi-monitor:
+    build: .
+    network_mode: host
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    volumes:
+      - /run/udev:/run/udev:ro
+      - /lib/modules:/lib/modules
+      - /usr/lib/firmware:/usr/lib/firmware
+      - /etc/wpa_supplicant:/etc/wpa_supplicant
+      - /var/run/wpa_supplicant:/var/run/wpa_supplicant
+    environment:
+      - WIFI_INTERFACE=wlx6c60ebd46348
+    devices:
+      - "/dev/bus/usb/002/003:/dev/bus/usb/002/003"

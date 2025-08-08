@@ -4,7 +4,7 @@ import subprocess
 import requests
 import time
 import threading
-from typing import Dict
+from typing import Dict, Optional
 
 from settings import Settings, settings
 
@@ -70,7 +70,7 @@ class WiFiChecker:
             return set()
 
     def send_message_telegram(
-        self, message: str, chat_id: str, buttons: dict | None = None
+        self, message: str, chat_id: str, buttons: Optional[dict] = None
     ):
         """Отправить сообщение в телеграм."""
         payload = {"chat_id": chat_id, "text": message}

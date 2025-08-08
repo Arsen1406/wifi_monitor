@@ -82,7 +82,7 @@ class WiFiChecker:
         )
         return response
 
-    def sending_messages(self, message: str, buttons: dict | None = None):
+    def sending_messages(self, message: str, buttons: Optional[dict] = None):
         """Рассылка сообщений в телеграм на все чаты."""
         for chat in self.chat_ids:
             response = self.send_message_telegram(

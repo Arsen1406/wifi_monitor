@@ -48,7 +48,7 @@ class WiFiChecker:
 
             except Exception as e:
                 logger.warning(f"Ошибка сканирования: {e}")
-                time.sleep(self.check_interval)
+                time.sleep(30)
                 continue
 
     def send_message_telegram(self, message: str, chat_id: str):
@@ -83,7 +83,6 @@ class WiFiChecker:
 
     def drop_count(self):
         """Сбросить счётчик попыток."""
-
         self.count = 1
 
     def start(self):
@@ -98,7 +97,7 @@ class WiFiChecker:
                 self.drop_count()
                 continue
 
-            if self.wifi_name not in wifi_info and self.count != 0:
+            if self.wifi_name not in wifi_info and self.count > 0:
                 self.count -= 1
                 continue
 

@@ -184,7 +184,10 @@ class WiFiChecker:
                 logger.info(message)
 
                 for chat_id in list(self.active_chats.keys()):
-                    self.send_message_telegram(message, chat_id)
+                    self.send_message_telegram(
+                        message=message,
+                        chat_id=chat_id,
+                        buttons=START_BUTTON)
                     del self.active_chats[chat_id]
 
                 if not self.active_chats:
